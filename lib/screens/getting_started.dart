@@ -18,7 +18,7 @@ class _GettingStartedState extends State<GettingStarted> {
   }
 
   _navigatetohome() async {
-    await Future.delayed(Duration(milliseconds: 5000), () {});
+    await Future.delayed(Duration(milliseconds: 1200), () {});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const Home()));
   }
@@ -39,10 +39,7 @@ class _GettingStartedState extends State<GettingStarted> {
             Text(
               'Move.Recover.Thrive',
               style: GoogleFonts.lato(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: aGray
-              ),
+                  fontSize: 20, fontWeight: FontWeight.bold, color: aGray),
             ),
           ],
         ),
