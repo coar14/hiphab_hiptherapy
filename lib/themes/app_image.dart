@@ -20,5 +20,6 @@ class AppImages {
   static const String squats = "${assetsPath}Rectangle 43.gif";
   static const String postop = "${assetsPath}Rectangle 7.png";
   static const String add = "${assetsPath}Plus Math.png";
+  static const String arrownext = "${assetsPath}arrownext.png";
 
 }

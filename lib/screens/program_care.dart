@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/screens/prog_instruct.dart';
+import 'package:therapy/screens/program_start.dart';
 import 'package:therapy/screens/therapy.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
@@ -95,12 +96,16 @@ class ProgramCare extends StatelessWidget {
                         image: AppImages.icing,
                         title: 'Icing',
                         subTitle: '4 hours, rest in between',
+                        context:
+                            context, // Pass the context from the parent widget
+                        navigateTo:
+                            ProgramStart(), // Widget to navigate to when tapped
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.ankle,
                         title: 'Ankle Pumping',
-                        subTitle: '3 sec hold, 10-15 times',
+                        subTitle: '3 sec hold, 10-15 times', context: context, navigateTo: const ProgramStart(),
                       ),
                       const SizedBox(height: 20),
                       Text(
@@ -114,13 +119,13 @@ class ProgramCare extends StatelessWidget {
                       _buildImageWithText(
                         image: AppImages.dangle,
                         title: 'Sitting Dangle',
-                        subTitle: '10 reps, 2x daily',
+                        subTitle: '10 reps, 2x daily', context: context, navigateTo: const ProgramStart(),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.leg,
                         title: 'Sitting Leg Raises',
-                        subTitle: '10 reps, 2x daily',
+                        subTitle: '10 reps, 2x daily',context: context, navigateTo: const ProgramStart()
                       ),
                       const SizedBox(height: 20),
                       Text(
@@ -134,43 +139,43 @@ class ProgramCare extends StatelessWidget {
                       _buildImageWithText(
                         image: AppImages.march,
                         title: 'Alternating March',
-                        subTitle: '10 reps, 2x daily',
+                        subTitle: '10 reps, 2x daily',context: context, navigateTo: const ProgramStart()
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.squats,
                         title: 'Mini Squats',
-                        subTitle: '10 reps, 2x daily',
+                        subTitle: '10 reps, 2x daily',context: context, navigateTo: const ProgramStart()
                       ),
                       const SizedBox(height: 35),
                       GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ProgInstruct(),
-                          ),
-                        );
-                      },
-                      child: Container(
-                        height: 60,
-                        width: 309,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: aRed,
-                        ),
-                        child: Center(
-                          child: Text('Add Program',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.leagueSpartan(
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white,
-                            fontSize: 24,
-                          ),
-                          ),
-                        ),
-                      )
-                      ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProgInstruct(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            height: 60,
+                            width: 309,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: aRed,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Add Program',
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.leagueSpartan(
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                ),
+                              ),
+                            ),
+                          )),
                     ],
                   ),
                 ),
@@ -186,18 +191,28 @@ class ProgramCare extends StatelessWidget {
     required String image,
     required String title,
     required String subTitle,
+     required BuildContext context, // Pass the BuildContext from the parent widget
+  required Widget navigateTo,
   }) {
-    return Container(
+    return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => navigateTo,
+        ),
+      );
+    },
+    child: Container(
       height: 113,
       width: 353,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(40),
         image: DecorationImage(
-          image: AssetImage(image),
-          alignment: Alignment.centerLeft,
-          fit: BoxFit.fitHeight
-        ),
+            image: AssetImage(image),
+            alignment: Alignment.centerLeft,
+            fit: BoxFit.fitHeight),
       ),
       child: Padding(
         padding: const EdgeInsets.only(top: 30, left: 160),
@@ -221,6 +236,7 @@ class ProgramCare extends StatelessWidget {
           ],
         ),
       ),
+    ),
     );
   }
 }
