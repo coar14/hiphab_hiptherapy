@@ -85,6 +85,7 @@ class ProgramDetail extends StatelessWidget {
                   image: const DecorationImage(
                     image: AssetImage(AppImages.postop))
                 ),
+                
                 child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -117,7 +118,9 @@ class ProgramDetail extends StatelessWidget {
                     )
                   ],
                 ),
+                
                 ),
+                
                ),
             ],
           ),

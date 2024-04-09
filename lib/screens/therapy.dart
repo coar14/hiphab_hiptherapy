@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:therapy/screens/exercise_details.dart';
 import 'package:therapy/screens/program_detail.dart';
 
 import '../themes/app_image.dart';
@@ -71,7 +72,16 @@ class Therapy extends StatelessWidget {
                   ),
                   ),
                   const SizedBox(height: 45),
-                  Stack(
+                  GestureDetector(
+                    onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ExerciseDetails(),
+                          ),
+                        );
+                      },
+                  child: Stack(
                   children: [
                     Container(
                       height: 269,
@@ -104,6 +114,7 @@ class Therapy extends StatelessWidget {
                     ),
                     ),
                   ],
+                  ),
                   ),
                   const SizedBox(height: 45),
                   Stack(
