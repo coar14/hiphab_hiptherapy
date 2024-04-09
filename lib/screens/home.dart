@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:therapy/bargraph/bar_graph.dart';
+import 'package:therapy/bargraph/pie_chart.dart';
 import 'package:therapy/themes/const_style.dart';
 
 class Home extends StatefulWidget {
@@ -32,7 +33,7 @@ class _HomeState extends State<Home> {
                   fontSize: 36,
                 ),
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 10),
               Text(
                 'Today is $currentDate',
                 style: const TextStyle(
@@ -52,7 +53,7 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 1, 
+                  itemCount: 1,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 143,
@@ -80,37 +81,23 @@ class _HomeState extends State<Home> {
                   fontSize: 24,
                 ),
               ),
+              Container(
+                height: 100,
+                child: MyPieChart(),
+              ),
               Expanded(
                 child: ListView.builder(
                   itemCount: 1,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 130,
-                      width: double.infinity,
                       padding: EdgeInsets.all(12),
                       margin: EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: MyBarGraph(weeklySummary: weeklySummary),
-                    );
-                  },
-                ),
-              ),
-               Expanded(
-                child: ListView.builder(
-                  itemCount: 1,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      height: 130,
-                      width: double.infinity,
-                      padding: EdgeInsets.all(12),
-                      margin: EdgeInsets.symmetric(vertical: 10),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(8),
-                      ),
+                      //Text for exercises completed this week
                       child: MyBarGraph(weeklySummary: weeklySummary),
                     );
                   },
