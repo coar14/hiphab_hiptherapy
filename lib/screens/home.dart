@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:therapy/bargraph/bar_graph.dart';
 import 'package:therapy/themes/const_style.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  List<double> weeklySummary = [1.0, 0.0, 2.0, 0.0, 1.0, 0.0, 1.0];
   @override
   Widget build(BuildContext context) {
     String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
@@ -18,14 +25,14 @@ class Home extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Welcome',
+                'Welcome, Seru',
                 style: GoogleFonts.leagueSpartan(
                   fontWeight: FontWeight.w500,
                   color: Colors.black,
                   fontSize: 36,
                 ),
               ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 5),
               Text(
                 'Today is $currentDate',
                 style: const TextStyle(
@@ -45,7 +52,7 @@ class Home extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 1, // Set your item count here
+                  itemCount: 1, 
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 143,
@@ -78,7 +85,7 @@ class Home extends StatelessWidget {
                   itemCount: 1,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      height: 380,
+                      height: 130,
                       width: double.infinity,
                       padding: EdgeInsets.all(12),
                       margin: EdgeInsets.symmetric(vertical: 10),
@@ -86,11 +93,25 @@ class Home extends StatelessWidget {
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Text(
-                        'No active program',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                      child: MyBarGraph(weeklySummary: weeklySummary),
+                    );
+                  },
+                ),
+              ),
+               Expanded(
+                child: ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: 130,
+                      width: double.infinity,
+                      padding: EdgeInsets.all(12),
+                      margin: EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[300],
+                        borderRadius: BorderRadius.circular(8),
                       ),
+                      child: MyBarGraph(weeklySummary: weeklySummary),
                     );
                   },
                 ),
