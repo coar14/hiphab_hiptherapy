@@ -10,4 +10,5 @@ class AppImages {
   static const String programs = "${assetsPath}Rectangle 7.png";
   static const String exercises = "${assetsPath}Rectangle 20.png";
   static const String plan = "${assetsPath}Rectangle 22.png";
+  static const String back = "${assetsPath}backarrow.png";
 }
