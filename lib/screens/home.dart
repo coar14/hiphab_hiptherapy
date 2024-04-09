@@ -42,7 +42,7 @@ class _HomeState extends State<Home> {
                   color: Colors.grey,
                 ),
               ),
-              SizedBox(height: 35),
+              const SizedBox(height: 35),
               Text(
                 'Active Programs',
                 style: GoogleFonts.leagueSpartan(
@@ -58,13 +58,13 @@ class _HomeState extends State<Home> {
                     return Container(
                       height: 143,
                       width: double.infinity,
-                      padding: EdgeInsets.all(12),
-                      margin: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.all(12),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Text(
+                      child: const Text(
                         'No active program',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 16),
@@ -97,7 +97,6 @@ class _HomeState extends State<Home> {
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      //Text for exercises completed this week
                       child: MyBarGraph(weeklySummary: weeklySummary),
                     );
                   },
