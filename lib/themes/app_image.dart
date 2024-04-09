@@ -12,4 +12,13 @@ class AppImages {
   static const String plan = "${assetsPath}Rectangle 22.png";
   static const String back = "${assetsPath}backarrow.png";
   static const String hamstr = "${assetsPath}hamstr.jpg";
+  static const String icing = "${assetsPath}Rectangle 33.gif";
+  static const String ankle = "${assetsPath}Rectangle 35.gif";
+  static const String dangle = "${assetsPath}Rectangle 37.gif";
+  static const String leg = "${assetsPath}Rectangle 39.gif";
+  static const String march = "${assetsPath}Rectangle 41.gif";
+  static const String squats = "${assetsPath}Rectangle 43.gif";
+  static const String postop = "${assetsPath}Rectangle 7.png";
+  static const String add = "${assetsPath}Plus Math.png";
+
 }

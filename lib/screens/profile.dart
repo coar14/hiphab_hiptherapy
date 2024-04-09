@@ -119,7 +119,7 @@ class Profile extends StatelessWidget {
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 170),
+                              SizedBox(width: 160),
                               Icon(Icons.arrow_forward_ios_rounded)
                             ],
                           ),
@@ -146,7 +146,7 @@ class Profile extends StatelessWidget {
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 140),
+                              SizedBox(width: 130),
                               Icon(Icons.arrow_forward_ios_rounded)
                             ],
                           ),

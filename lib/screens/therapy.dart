@@ -18,7 +18,7 @@ class Therapy extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal:10, vertical: 30),
               child: Column(
                 children: [
-                  Text('Therapy',
+                  Text('THERAPY',
                   style: GoogleFonts.leagueSpartan(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
@@ -38,8 +38,8 @@ class Therapy extends StatelessWidget {
                   child: Stack(
                   children: [
                     Container(
-                      height: 269,
-                      width: 362,
+                      height: 265,
+                      width: 360,
                       decoration: BoxDecoration(
                         color: const Color(0xFFD9D9D9),
                         borderRadius: BorderRadius.circular(40),
@@ -144,7 +144,7 @@ class Therapy extends StatelessWidget {
               ),
             )
           ],
-        )
+        ),
       ),
     );
   }
