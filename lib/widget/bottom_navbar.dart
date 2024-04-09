@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:therapy/screens/notes.dart';
+import 'package:therapy/screens/learns.dart';
 import 'package:therapy/screens/profile.dart';
 import 'package:therapy/screens/therapy.dart';
 
@@ -16,7 +16,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   List<Widget> screenList = [
     const Home(),
-    const Notes(),
+    const Learns(),
     const Therapy(),
     const Profile()
   ];
@@ -59,7 +59,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       onTap: onItemTapped,
       items: <BottomNavigationBarItem>[
         _buildBottomNavigationBarItem(AppImages.home, 0),
-        _buildBottomNavigationBarItem(AppImages.notes, 1),
+        _buildBottomNavigationBarItem(AppImages.learn, 1),
         _buildBottomNavigationBarItem(AppImages.therapy, 2),
         _buildBottomNavigationBarItem(AppImages.profile, 3),
       ],
