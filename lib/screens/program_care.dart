@@ -34,7 +34,7 @@ class ProgramCare extends StatelessWidget {
                           );
                         },
                         child: const Image(
-                          image: AssetImage(AppImages.back),
+                          image: AssetImage(AppImages.backarrow),
                           color: Color(0xFFFFFFFF),
                         ),
                       ),
@@ -105,7 +105,9 @@ class ProgramCare extends StatelessWidget {
                       _buildImageWithText(
                         image: AppImages.ankle,
                         title: 'Ankle Pumping',
-                        subTitle: '3 sec hold, 10-15 times', context: context, navigateTo: const ProgramStart(),
+                        subTitle: '3 sec hold, 10-15 times',
+                        context: context,
+                        navigateTo: const ProgramStart(),
                       ),
                       const SizedBox(height: 20),
                       Text(
@@ -119,14 +121,17 @@ class ProgramCare extends StatelessWidget {
                       _buildImageWithText(
                         image: AppImages.dangle,
                         title: 'Sitting Dangle',
-                        subTitle: '10 reps, 2x daily', context: context, navigateTo: const ProgramStart(),
+                        subTitle: '10 reps, 2x daily',
+                        context: context,
+                        navigateTo: const ProgramStart(),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
-                        image: AppImages.leg,
-                        title: 'Sitting Leg Raises',
-                        subTitle: '10 reps, 2x daily',context: context, navigateTo: const ProgramStart()
-                      ),
+                          image: AppImages.leg,
+                          title: 'Sitting Leg Raises',
+                          subTitle: '10 reps, 2x daily',
+                          context: context,
+                          navigateTo: const ProgramStart()),
                       const SizedBox(height: 20),
                       Text(
                         '6 + DAY POST-OP',
@@ -137,16 +142,18 @@ class ProgramCare extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
-                        image: AppImages.march,
-                        title: 'Alternating March',
-                        subTitle: '10 reps, 2x daily',context: context, navigateTo: const ProgramStart()
-                      ),
+                          image: AppImages.march,
+                          title: 'Alternating March',
+                          subTitle: '10 reps, 2x daily',
+                          context: context,
+                          navigateTo: const ProgramStart()),
                       const SizedBox(height: 10),
                       _buildImageWithText(
-                        image: AppImages.squats,
-                        title: 'Mini Squats',
-                        subTitle: '10 reps, 2x daily',context: context, navigateTo: const ProgramStart()
-                      ),
+                          image: AppImages.squats,
+                          title: 'Mini Squats',
+                          subTitle: '10 reps, 2x daily',
+                          context: context,
+                          navigateTo: const ProgramStart()),
                       const SizedBox(height: 35),
                       GestureDetector(
                           onTap: () {
@@ -191,52 +198,53 @@ class ProgramCare extends StatelessWidget {
     required String image,
     required String title,
     required String subTitle,
-     required BuildContext context, // Pass the BuildContext from the parent widget
-  required Widget navigateTo,
+    required BuildContext
+        context, // Pass the BuildContext from the parent widget
+    required Widget navigateTo,
   }) {
     return GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => navigateTo,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => navigateTo,
+          ),
+        );
+      },
+      child: Container(
+        height: 113,
+        width: 353,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(40),
+          image: DecorationImage(
+              image: AssetImage(image),
+              alignment: Alignment.centerLeft,
+              fit: BoxFit.fitHeight),
         ),
-      );
-    },
-    child: Container(
-      height: 113,
-      width: 353,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(40),
-        image: DecorationImage(
-            image: AssetImage(image),
-            alignment: Alignment.centerLeft,
-            fit: BoxFit.fitHeight),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 160),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: GoogleFonts.lato(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30, left: 160),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.lato(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              subTitle,
-              style: GoogleFonts.lato(
-                fontSize: 16,
+              const SizedBox(height: 5),
+              Text(
+                subTitle,
+                style: GoogleFonts.lato(
+                  fontSize: 16,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
     );
   }
 }

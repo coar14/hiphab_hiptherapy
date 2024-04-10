@@ -39,7 +39,7 @@ class ExerciseDetails extends StatelessWidget {
                         );
                       },
                       child: const Image(
-                        image: AssetImage(AppImages.back),
+                        image: AssetImage(AppImages.backarrow),
                         color: Colors.white,
                       ),
                     ),
