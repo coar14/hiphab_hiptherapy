@@ -21,5 +21,17 @@ class AppImages {
   static const String postop = "${assetsPath}Rectangle 7.png";
   static const String add = "${assetsPath}Plus Math.png";
   static const String arrownext = "${assetsPath}arrownext.png";
+}
 
+class ExsImg {
+  static const String assetsPath = "assets/";
+
+  static const String eHam = "${assetsPath}eHam.png";
+  static const String eCalf = "${assetsPath}eCalf.png";
+  static const String eAlt = "${assetsPath}eAlt.png";
+  static const String eStep = "${assetsPath}eStep.png";
+  static const String eHip = "${assetsPath}eHip.png";
+  static const String eStanding = "${assetsPath}eStanding.png";
+  static const String eWall = "${assetsPath}eWall.png";
+  static const String eWalking = "${assetsPath}eWalking.png";
 }
