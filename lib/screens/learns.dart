@@ -15,13 +15,20 @@ class Learns extends StatelessWidget {
           children: [
             Column(
               children: [
+                Text(
+                  'LEARN',
+                  style: GoogleFonts.leagueSpartan(
+                      fontSize: 32, color: aGray, fontWeight: FontWeight.bold),
+                ),
                 Container(
-                  height: 190,
                   width: 316,
-                  color: aRed,
+                  decoration: BoxDecoration(
+                    color: aRed,
+                    borderRadius: BorderRadius.circular(15.0), 
+                  ),
                   padding: EdgeInsets.all(20.0),
                   child: Text(
-                    'THE HIP \nREPLACEMENT \nPOST-SURGERY \nTHERAPY',
+                    'THERAPY FOR HIP RELATED ISSUES',
                     style: GoogleFonts.leagueSpartan(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
