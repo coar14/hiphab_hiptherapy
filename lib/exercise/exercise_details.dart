@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:therapy/screens/exercise_test.dart';
+import 'package:therapy/exercise/exercise_test.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
 import 'package:therapy/widget/bottom_navbar.dart';
@@ -66,19 +66,12 @@ class ExerciseDetails extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 30),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ExerciseCare(),
-                    ),
-                  );
-                },
-                child: Container(),
+              const SizedBox(height: 20),
+              Expanded(
+                child: ExerciseCare(),
               ),
             ],
+            
           ),
         ),
       ),
