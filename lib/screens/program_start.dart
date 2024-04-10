@@ -13,7 +13,7 @@ class ProgramStart extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(top: 16.0), // Add desired padding here
+          padding: const EdgeInsets.only(top: 18.0), 
           child: Column(
             children: [
               Row(
@@ -28,14 +28,17 @@ class ProgramStart extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Image.asset(AppImages.back),
+                    child: const Image(
+                      image: AssetImage(AppImages.backarrow),
+                      color: Colors.grey,
+                    ),
                   ),
                   Text(
                     'Postoperative Care',
                     style: GoogleFonts.leagueSpartan(
                       fontSize: 25,
                       fontWeight: FontWeight.w500,
-                      color: bGray,
+                      color: aGray,
                     ),
                   ),
                   GestureDetector(
@@ -47,12 +50,15 @@ class ProgramStart extends StatelessWidget {
                         ),
                       );
                     },
-                    child: Image.asset(AppImages.arrownext),
+                    child: const Image(
+                      image: AssetImage(AppImages.arrownext),
+                      color: aGray,
+                    ),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 5,
+                height: 2,
               ),
               Text(
                 'Day 1: Icing',
@@ -61,6 +67,15 @@ class ProgramStart extends StatelessWidget {
                   color: aRed,
                   fontWeight: FontWeight.bold,
                 ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Image.asset(
+                'assets/postoCare.png',
+                width: 100,
+                height: 100,
+                fit: BoxFit.contain,
               ),
             ],
           ),

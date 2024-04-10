@@ -39,7 +39,7 @@ class ProgramDetail extends StatelessWidget {
                         );
                       },
                       child: const Image(
-                        image: AssetImage(AppImages.back),
+                        image: AssetImage(AppImages.backarrow),
                         color: Colors.white,
                       ),
                     ),
@@ -67,61 +67,55 @@ class ProgramDetail extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 30),
-               GestureDetector(
+              GestureDetector(
                 onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const ProgramCare(),
-                      ),
-                    );
-                  },
-              child: Container(
-                height: 199,
-                width: 393,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(40),
-                  image: const DecorationImage(
-                    image: AssetImage(AppImages.postop))
-                ),
-                
-                child:Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top:130, left: 12),
-                      child: RichText(
-                        textAlign: TextAlign.left,
-                        text: TextSpan(
-                          text: 'Postoperative Care',
-                          style: GoogleFonts.lato(
-                            fontSize:20,
-                            fontWeight: FontWeight.w400
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: '\n              Duration: 6 weeks',
-                              style: GoogleFonts.lato(
-                                fontSize:15,
-                              )
-                            )
-                          ]
-                          ),
-                        ),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProgramCare(),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top:130,right: 15),
-                      child: Image(
-                        color:Colors.white,
-                        image: AssetImage(AppImages.add,)),
-                    )
-                  ],
+                  );
+                },
+                child: Container(
+                  height: 199,
+                  width: 393,
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(40),
+                      image: const DecorationImage(
+                          image: AssetImage(AppImages.postop))),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 130, left: 12),
+                        child: RichText(
+                          textAlign: TextAlign.left,
+                          text: TextSpan(
+                              text: 'Postoperative Care',
+                              style: GoogleFonts.lato(
+                                  fontSize: 20, fontWeight: FontWeight.w400),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: '\nDuration: 6 weeks',
+                                    style: GoogleFonts.lato(
+                                      fontSize: 15,
+                                    ))
+                              ]),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 130, right: 15),
+                        child: Image(
+                            color: Colors.white,
+                            image: AssetImage(
+                              AppImages.add,
+                            )),
+                      )
+                    ],
+                  ),
                 ),
-                
-                ),
-                
-               ),
+              ),
             ],
           ),
         ),

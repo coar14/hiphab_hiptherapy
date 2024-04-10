@@ -10,7 +10,7 @@ class AppImages {
   static const String programs = "${assetsPath}Rectangle 7.png";
   static const String exercises = "${assetsPath}Rectangle 20.png";
   static const String plan = "${assetsPath}Rectangle 22.png";
-  static const String back = "${assetsPath}backarrow.png";
+  static const String backarrow = "${assetsPath}backarrow.png";
   static const String hamstr = "${assetsPath}hamstr.jpg";
   static const String icing = "${assetsPath}Rectangle 33.gif";
   static const String ankle = "${assetsPath}Rectangle 35.gif";
@@ -21,17 +21,18 @@ class AppImages {
   static const String postop = "${assetsPath}Rectangle 7.png";
   static const String add = "${assetsPath}Plus Math.png";
   static const String arrownext = "${assetsPath}arrownext.png";
+  static const String postoCare = "${assetsPath}postoCare.png";
 }
 
 class ExsImg {
   static const String assetsPath = "assets/";
 
-  static const String eHam = "${assetsPath}eHam.png";
-  static const String eCalf = "${assetsPath}eCalf.png";
-  static const String eAlt = "${assetsPath}eAlt.png";
-  static const String eStep = "${assetsPath}eStep.png";
-  static const String eHip = "${assetsPath}eHip.png";
-  static const String eStanding = "${assetsPath}eStanding.png";
-  static const String eWall = "${assetsPath}eWall.png";
-  static const String eWalking = "${assetsPath}eWalking.png";
+  static const String eHam = "${assetsPath}eHam.gif";
+  static const String eCalf = "${assetsPath}eCalf.gif";
+  static const String eAlt = "${assetsPath}eAlt.gif";
+  static const String eStep = "${assetsPath}eStep.gif";
+  static const String eHip = "${assetsPath}eHip.gif";
+  static const String eStand = "${assetsPath}eStand.gif";
+  static const String eWall = "${assetsPath}eWall.gif";
+  static const String eWalking = "${assetsPath}eWalking.gif";
 }

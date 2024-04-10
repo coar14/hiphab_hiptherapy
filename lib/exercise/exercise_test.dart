@@ -22,12 +22,12 @@ class ExerciseCare extends StatelessWidget {
             ),
           ),
           _buildImageWithText(
-            image: ExsImg.eHam,
+            gifPath: ExsImg.eHam,
             title: 'Hamstring Stretch',
           ),
           const SizedBox(height: 10),
           _buildImageWithText(
-            image: ExsImg.eCalf,
+            gifPath: ExsImg.eCalf,
             title: 'Calf Stretch Heel Cord',
           ),
           SizedBox(height: 10),
@@ -42,12 +42,12 @@ class ExerciseCare extends StatelessWidget {
             ),
           ),
           _buildImageWithText(
-            image: ExsImg.eHip,
+            gifPath: ExsImg.eHip,
             title: 'Hip Flexion, Abduction, Adduction',
           ),
           const SizedBox(height: 10),
           _buildImageWithText(
-            image: ExsImg.eStep,
+            gifPath: ExsImg.eStep,
             title: 'Step up and Down',
           ),
           const SizedBox(height: 10),
@@ -62,12 +62,12 @@ class ExerciseCare extends StatelessWidget {
             ),
           ),
           _buildImageWithText(
-            image: ExsImg.eWall,
+            gifPath: ExsImg.eWall,
             title: 'Wall Squats',
           ),
           const SizedBox(height: 10),
           _buildImageWithText(
-            image: ExsImg.eWalking,
+            gifPath: ExsImg.eWalking,
             title: 'Walking on Flat Surface Uphill and Downhill',
           ),
           const SizedBox(height: 10),
@@ -82,12 +82,12 @@ class ExerciseCare extends StatelessWidget {
             ),
           ),
           _buildImageWithText(
-            image: ExsImg.eStanding,
+            gifPath: ExsImg.eStand,
             title: 'Standing Exercise',
           ),
           const SizedBox(height: 10),
           _buildImageWithText(
-            image: ExsImg.eAlt,
+            gifPath: ExsImg.eAlt,
             title: 'Alternate Marching',
           ),
         ],
@@ -97,13 +97,11 @@ class ExerciseCare extends StatelessWidget {
 }
 
 Widget _buildImageWithText({
-  required String image,
+  required String gifPath,
   required String title,
 }) {
   return GestureDetector(
-    onTap: () {
-      
-    },
+    onTap: () {},
     child: Container(
       height: 113,
       width: 353,
@@ -111,7 +109,7 @@ Widget _buildImageWithText({
         color: bGray,
         borderRadius: BorderRadius.circular(40),
         image: DecorationImage(
-          image: AssetImage(image),
+          image: AssetImage(gifPath),
           alignment: Alignment.centerLeft,
           fit: BoxFit.fitHeight,
         ),
