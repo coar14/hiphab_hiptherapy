@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:therapy/screens/prog_instruct.dart';
+import 'package:therapy/screens/program_detail.dart';
 import 'package:therapy/screens/program_start.dart';
-import 'package:therapy/screens/therapy.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
 
@@ -29,7 +28,7 @@ class ProgramCare extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const Therapy(),
+                              builder: (context) => ProgramDetail(onAddProgram: (String ) {},),
                             ),
                           );
                         },
@@ -92,14 +91,24 @@ class ProgramCare extends StatelessWidget {
                             color: aRed),
                       ),
                       const SizedBox(height: 10),
-                      _buildImageWithText(
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ProgramStart(),
+                            ),
+                          );
+                        },
+                      child: _buildImageWithText(
                         image: AppImages.icing,
                         title: 'Icing',
                         subTitle: '4 hours, rest in between',
                         context:
-                            context, // Pass the context from the parent widget
+                            context, 
                         navigateTo:
-                            ProgramStart(), // Widget to navigate to when tapped
+                            const ProgramStart(), 
+                      ),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
@@ -160,7 +169,7 @@ class ProgramCare extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ProgInstruct(),
+                                builder: (context) => const ProgramStart(),
                               ),
                             );
                           },
@@ -173,7 +182,7 @@ class ProgramCare extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                'Add Program',
+                                'Start Program',
                                 textAlign: TextAlign.center,
                                 style: GoogleFonts.leagueSpartan(
                                   fontWeight: FontWeight.w400,

@@ -10,7 +10,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 40.0),
+          padding: const EdgeInsets.symmetric(vertical: 40.0),
           child: Column(
             children: [
               Text(
@@ -21,7 +21,7 @@ class Profile extends StatelessWidget {
                   color: aGray,
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Center(
                 child: Image.asset(
                   'assets/male.png',
@@ -29,7 +29,7 @@ class Profile extends StatelessWidget {
                   width: 90,
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(
                 'Seru',
                 style: GoogleFonts.lato(
@@ -37,14 +37,14 @@ class Profile extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 1.0),
+              const SizedBox(height: 1.0),
               Text(
                 '@seru24hr',
                 style: GoogleFonts.lato(
                   fontSize: 20.0,
                 ),
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Column(
                 children: [
                   Padding(
@@ -59,14 +59,14 @@ class Profile extends StatelessWidget {
                           child: Row(
                             children: [
                               Image.asset('assets/edit.png'),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 'Edit Profile',
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 85),
-                              Icon(Icons.arrow_forward_ios_rounded)
+                              const SizedBox(width: 85),
+                              const Icon(Icons.arrow_forward_ios_rounded)
                             ],
                           ),
                         ),
@@ -86,14 +86,14 @@ class Profile extends StatelessWidget {
                           child: Row(
                             children: [
                               Image.asset('assets/privacy.png'),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 'Privacy Settings',
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 70),
-                              Icon(Icons.arrow_forward_ios_rounded)
+                              const SizedBox(width: 70),
+                              const Icon(Icons.arrow_forward_ios_rounded)
                             ],
                           ),
                         ),
@@ -113,14 +113,14 @@ class Profile extends StatelessWidget {
                           child: Row(
                             children: [
                               Image.asset('assets/about.png'),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 'About',
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 160),
-                              Icon(Icons.arrow_forward_ios_rounded)
+                              const SizedBox(width: 160),
+                              const Icon(Icons.arrow_forward_ios_rounded)
                             ],
                           ),
                         ),
@@ -140,14 +140,14 @@ class Profile extends StatelessWidget {
                           child: Row(
                             children: [
                               Image.asset('assets/logout.png'),
-                              SizedBox(width: 10),
+                              const SizedBox(width: 10),
                               Text(
                                 'Logout',
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              SizedBox(width: 130),
-                              Icon(Icons.arrow_forward_ios_rounded)
+                              const SizedBox(width: 130),
+                              const Icon(Icons.arrow_forward_ios_rounded)
                             ],
                           ),
                         ),

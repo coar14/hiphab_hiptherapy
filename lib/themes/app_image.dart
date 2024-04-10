@@ -18,9 +18,25 @@ class AppImages {
   static const String leg = "${assetsPath}Rectangle 39.gif";
   static const String march = "${assetsPath}Rectangle 41.gif";
   static const String squats = "${assetsPath}Rectangle 43.gif";
-  static const String postop = "${assetsPath}Rectangle 7.png";
+  static const String postop = "${assetsPath}Rectangle 16.png";
   static const String add = "${assetsPath}Plus Math.png";
   static const String arrownext = "${assetsPath}arrownext.png";
+  static const String homeremedy = "${assetsPath}Rectangle 27.png";
+  static const String hamstring = "${assetsPath}Rectangle 35 (2).gif";
+  static const String calf = "${assetsPath}Rectangle 37 (1).gif";
+  static const String standing = "${assetsPath}Rectangle 39 (1).gif";
+  static const String hip = "${assetsPath}Rectangle 41 (1).gif";
+  static const String wall = "${assetsPath}Rectangle 48.gif";
+  static const String happy = "${assetsPath}Happy.png";
+  static const String neutral = "${assetsPath}Neutral.png";
+  static const String sad = "${assetsPath}Sad.png";
+  static const String lol = "${assetsPath}LOL.png";
+  static const String ellipse = "${assetsPath}Ellipse 17.png";
+  static const String crying = "${assetsPath}Crying.png";
+  static const String close = "${assetsPath}Close.png";
+  static const String party = "${assetsPath}Confetti.png";
+  static const String senior = "${assetsPath}Rectangle 29.png";
+  static const String athlete = "${assetsPath}Rectangle 28.png";
   static const String postoCare = "${assetsPath}postoCare.png";
 }
 

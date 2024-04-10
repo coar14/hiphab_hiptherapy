@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/exercise/exercise_details.dart';
 import 'package:therapy/screens/program_detail.dart';
-
 import '../themes/app_image.dart';
 
 class Therapy extends StatelessWidget {
@@ -32,7 +31,7 @@ class Therapy extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProgramDetail(),
+                            builder: (context) =>ProgramDetail(onAddProgram: (String ) {  },),
                           ),
                         );
                       },

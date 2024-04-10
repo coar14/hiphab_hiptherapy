@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
               ),
               Container(
                 height: 100,
-                child: MyPieChart(),
+                child: const MyPieChart(),
               ),
               Expanded(
                 child: ListView.builder(
@@ -91,8 +91,8 @@ class _HomeState extends State<Home> {
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       height: 130,
-                      padding: EdgeInsets.all(12),
-                      margin: EdgeInsets.symmetric(vertical: 10),
+                      padding: const EdgeInsets.all(12),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
