@@ -14,9 +14,9 @@ class MyPieChart extends StatelessWidget {
             CircularPercentIndicator(
               radius: 30.0,
               lineWidth: 4.0,
-              percent: 0.0,
+              percent: 0.10,
               header: new Text("Program"),
-              center: Text("0%"),
+              center: Text("10%"),
               progressColor: Colors.red,
             ),
             SizedBox(width: 30.0), 

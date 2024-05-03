@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/themes/const_style.dart';
 
 class Learns extends StatefulWidget {
-  const Learns({Key? key});
+  const Learns({super.key});
 
   @override
   State<Learns> createState() => _LearnsState();
@@ -18,7 +18,7 @@ class _LearnsState extends State<Learns> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           scrollDirection: Axis.vertical,
           children: [
             Column(
@@ -37,9 +37,10 @@ class _LearnsState extends State<Learns> {
                     color: aRed,
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Text(
                     'THERAPY FOR HIP RELATED ISSUES',
+                    textAlign: TextAlign.center,
                     style: GoogleFonts.leagueSpartan(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -47,9 +48,9 @@ class _LearnsState extends State<Learns> {
                     ),
                   ),
                 ),
-                SizedBox(height: 25),
+                const SizedBox(height: 25),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Text(
                     'It is recommended you dedicate 30-60 minutes each day for exercises. You can break up your exercise routine and do some exercises in the morning and others in the afternoon or perform different groups of exercises on different days.',
                     style: GoogleFonts.inter(
@@ -58,9 +59,9 @@ class _LearnsState extends State<Learns> {
                     textAlign: TextAlign.justify,
                   ),
                 ),
-                SizedBox(height: 35),
+                const SizedBox(height: 35),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: ExpansionPanelList(
                     
                     expansionCallback: (int index, bool isExpanded) {
@@ -131,7 +132,7 @@ class _LearnsState extends State<Learns> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 30),
                 Container(
                   height: 200,
                   width: 500,

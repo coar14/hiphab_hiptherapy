@@ -87,7 +87,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(height: 55),
+                    const SizedBox(height: 30),
                     Image.asset(AppImages.party),
                     Text(
                       'Congratulations!',
@@ -122,7 +122,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                       children: [
                         EmotionWidget(
                           imagePath: AppImages.lol,
-                          text: 'No pain',
+                          text: 'No pain\n',
                           onPressed: () {
                             setState(() {
                               sliderValue = 1; 
@@ -187,6 +187,31 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                         });
                       },
                       activeColor: aRed,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProgramCare(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 200,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40),
+                        color: aRed
+                      ),
+                      child: Text('Submit',
+                      textAlign: TextAlign.center,
+                      style:GoogleFonts.lato(
+                        color:Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25
+                      )),
+                    )
                     ),
                   ],
                 ),

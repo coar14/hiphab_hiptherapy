@@ -181,7 +181,7 @@ class ProgramExer extends StatelessWidget {
       );
     },
     child: Container(
-      height: 113,
+      height: 125,
       width: 353,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -192,7 +192,7 @@ class ProgramExer extends StatelessWidget {
             fit: BoxFit.fitHeight),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 30, left: 160),
+        padding: const EdgeInsets.only(top: 25, left: 160),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
