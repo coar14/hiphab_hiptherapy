@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:therapy/screens/splash_screen.dart';
 import 'package:therapy/screens/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:therapy/widget/bottom_navbar.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (context) => const SplashScreen(),
             '/auth': (context) => const AuthPage(),
+            '/home': (context) => const BottomNavBar(),
           },
         );
       },

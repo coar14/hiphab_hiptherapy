@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:therapy/screens/home.dart';
 import 'package:therapy/screens/get_started.dart';
 
 class AuthPage extends StatelessWidget {
@@ -18,7 +17,9 @@ class AuthPage extends StatelessWidget {
             ),
           );
         } else if (snapshot.hasData) {
-          return const Home();
+          Future.microtask(
+              () => Navigator.of(context).pushReplacementNamed('/home'));
+          return const SizedBox.shrink();
         } else {
           return const GetStarted();
         }

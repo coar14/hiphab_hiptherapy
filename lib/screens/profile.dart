@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/themes/const_style.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
+
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
 
   @override
   Widget build(BuildContext context) {
