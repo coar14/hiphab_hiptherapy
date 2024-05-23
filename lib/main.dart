@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:therapy/screens/getting_started.dart';
+import 'package:therapy/screens/splash_screen.dart';
+import 'package:therapy/screens/auth_page.dart';
 
 void main() {
   runApp(const MyApp());
