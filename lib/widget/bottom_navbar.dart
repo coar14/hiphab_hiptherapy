@@ -18,7 +18,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const Home(),
     const Learns(),
     const Therapy(),
-    const Profile()
+    Profile(),
   ];
 
   void onItemTapped(int index) {
