@@ -32,7 +32,7 @@ class Therapy extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>ProgramDetail(onAddProgram: (String ) {  },),
+                            builder: (context) => const ProgramDetail(),
                           ),
                         );
                       },

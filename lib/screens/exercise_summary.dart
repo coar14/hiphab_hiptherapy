@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:therapy/screens/program_care.dart';
-import 'package:therapy/screens/program_start.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
+import 'package:therapy/screens/program_care.dart';
+import '../providers.dart';
 
 
-
-
-class ExerciseSummary extends StatefulWidget {
-  final List<bool> completedExercises;
-
-  const ExerciseSummary({super.key, required this.completedExercises});
+class ExerciseSummary extends ConsumerStatefulWidget {
+  const ExerciseSummary({Key? key}) : super(key: key);
 
   @override
   _ExerciseSummaryState createState() => _ExerciseSummaryState();
 }
 
-class _ExerciseSummaryState extends State<ExerciseSummary> {
-  double sliderValue = 5; // Initial value of the slider
+class _ExerciseSummaryState extends ConsumerState<ExerciseSummary> {
+  double sliderValue = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +33,14 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProgramCare(),
-                        ),
-                      );
-                    },
-                        child: Image.asset(AppImages.close),
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProgramCare(),
+                              ),
+                            );
+                          },
+                          child: Image.asset(AppImages.close),
                         ),
                         const SizedBox(width: 10),
                         Text(
@@ -58,7 +55,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                     ),
                   ),
                   Text(
-                    'Day 1 Complete!',
+                    'Program Complete!',
                     style: GoogleFonts.lato(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -99,7 +96,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      'You finished day 1 of your Postoperative Care.',
+                      'You finished the program of Postoperative Care.',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.lato(
                         fontSize: 24,
@@ -125,7 +122,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                           text: 'No pain\n',
                           onPressed: () {
                             setState(() {
-                              sliderValue = 1; 
+                              sliderValue = 1;
                             });
                           },
                         ),
@@ -134,7 +131,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                           text: 'Hurts \na little',
                           onPressed: () {
                             setState(() {
-                              sliderValue = 3; 
+                              sliderValue = 3;
                             });
                           },
                         ),
@@ -143,7 +140,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                           text: 'Hurts a \nlitte more',
                           onPressed: () {
                             setState(() {
-                              sliderValue = 5; 
+                              sliderValue = 5;
                             });
                           },
                         ),
@@ -152,7 +149,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                           text: 'Hurts even \nmore',
                           onPressed: () {
                             setState(() {
-                              sliderValue = 7; 
+                              sliderValue = 7;
                             });
                           },
                         ),
@@ -167,7 +164,7 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                         ),
                         EmotionWidget(
                           imagePath: AppImages.crying,
-                          text: 'Hurts \nworst',
+                          text: 'Hurts\nworst',
                           onPressed: () {
                             setState(() {
                               sliderValue = 10;
@@ -190,28 +187,33 @@ class _ExerciseSummaryState extends State<ExerciseSummary> {
                     ),
                     GestureDetector(
                       onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProgramCare(),
+                        ref.read(painLevelProvider.state).state = sliderValue;
+                        ref.read(programStartedProvider.state).state = true; 
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProgramCare(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 200,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(40),
+                          color: aRed,
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: 200,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        color: aRed
+                        child: Center(
+                          child: Text(
+                            'Submit',
+                            style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
                       ),
-                      child: Text('Submit',
-                      textAlign: TextAlign.center,
-                      style:GoogleFonts.lato(
-                        color:Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25
-                      )),
-                    )
                     ),
                   ],
                 ),
@@ -243,8 +245,31 @@ class EmotionWidget extends StatelessWidget {
       child: Column(
         children: [
           Image.asset(imagePath),
-          Text(text),
+          Text(text, textAlign: TextAlign.center),
         ],
+      ),
+    );
+  }
+}
+
+class Indicator extends StatelessWidget {
+  final bool isActive;
+  final bool isCompleted;
+
+  const Indicator({
+    Key? key,
+    required this.isActive,
+    required this.isCompleted,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 12,
+      height: 12,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: isActive ? (isCompleted ? Colors.green : Colors.blue) : Colors.grey,
       ),
     );
   }

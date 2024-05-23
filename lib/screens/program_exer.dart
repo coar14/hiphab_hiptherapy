@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/screens/program_detail.dart';
-import 'package:therapy/screens/program_start.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
 
@@ -28,7 +27,7 @@ class ProgramExer extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ProgramDetail(onAddProgram: (String ) {},),
+                              builder: (context) => const ProgramDetail(),
                             ),
                           );
                         },
@@ -87,7 +86,7 @@ class ProgramExer extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const ProgramStart(),
+                              builder: (context) => const ProgramDetail(),
                             ),
                           );
                         },
@@ -97,32 +96,32 @@ class ProgramExer extends StatelessWidget {
                         context:
                             context, 
                         navigateTo:
-                            const ProgramStart(), 
+                            const ProgramDetail(), 
                       ),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.calf,
                         title: 'Calf Stretch Heel Cord',
-                        context: context, navigateTo: const ProgramStart(),
+                        context: context, navigateTo: const ProgramDetail(),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.standing,
                         title: 'Standing Exercise',
-                        context: context, navigateTo: const ProgramStart(),
+                        context: context, navigateTo: const ProgramDetail(),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.hip,
                         title: 'Hip Flexion, Abduction, Adduction',
-                        context: context, navigateTo: const ProgramStart()
+                        context: context, navigateTo: const ProgramDetail(),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
                         image: AppImages.wall,
                         title: 'Wall Squats',
-                        context: context, navigateTo: const ProgramStart()
+                        context: context, navigateTo: const ProgramDetail()
                       ),
                       const SizedBox(height: 35),
                       GestureDetector(
@@ -130,7 +129,7 @@ class ProgramExer extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ProgramStart(),
+                                builder: (context) => const ProgramDetail(),
                               ),
                             );
                           },

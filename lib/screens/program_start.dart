@@ -1,54 +1,117 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:therapy/programs/program_progress.dart';
-import 'package:therapy/screens/exercise_summary.dart';
-import 'package:therapy/screens/program_detail.dart';
+import 'package:therapy/screens/program_care.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
+import '../providers.dart';
+import 'exercise_summary.dart';
+
+final List<String> exerciseTitles = [
+  'Icing',
+  'Ankle Pumping',
+  'Sitting Dangle',
+  'Sitting Leg Raises',
+  'Alternating March',
+  'Mini Squats'
+];
+
+final Map<int, List<Map<String, String>>> exercises = {
+  1: [
+    {
+      'title': 'Icing',
+      'image': AppImages.icing,
+      'duration': '4 hours, rest in between',
+      'description': 'An ice pack is wrapped in a thin towel and placed gently above the hip. This is to reduce pain and inflammation in the area. '
+    },
+    {
+      'title': 'Ankle Pumping',
+      'image': AppImages.ankle,
+      'duration': '3 sec hold, 10-15 times',
+      'description': 'Lie on your back with your legs straight, move your ankles up and hold for 3 seconds, move them down and hold for 3 seconds. Repeat until 10-15 times.'
+    },
+  ],
+  2: [
+    {
+      'title': 'Sitting Dangle',
+      'image': AppImages.dangle,
+      'duration': '10 reps, 2x daily',
+      'description': 'Sit on a chair, extend your leg straight out in front of you, hold for 2-3 seconds, then lower it back down. Repeat 10 times per leg, twice daily.'
+    },
+    {
+      'title': 'Sitting Leg Raises',
+      'image': AppImages.leg,
+      'duration': '10 reps, 2x daily',
+      'description': 'Sit on a chair, lift one leg straight towards the ceiling without bending your knee, hold for 2-3 seconds, then lower it. Repeat 10 times per leg, twice daily.'
+    },
+  ],
+  3: [
+    {
+      'title': 'Alternating March',
+      'image': AppImages.march,
+      'duration': '10 reps, 2x daily',
+      'description': 'Stand and lift one knee towards your chest, hold for 2-3 seconds, then switch legs in a smooth motion. Perform 10 repetitions per leg, twice daily.'
+    },
+    {
+      'title': 'Mini Squats',
+      'image': AppImages.squats,
+      'duration': '10 reps, 2x daily',
+      'description': 'Stand with feet shoulder-width apart, bend your knees and lower your hips as if sitting on a chair, hold for 2-3 seconds, then rise back up. Repeat 10 times, twice daily.'
+    },
+  ],
+};
+
+final currentDayProvider = StateProvider<int>((ref) => 1);
+final currentExerciseIndexProvider = StateProvider<int>((ref) => 0);
 
 class ProgramStart extends StatelessWidget {
-  const ProgramStart({super.key});
+  final int currentDay;
+  final int currentExerciseIndex;
+
+  const ProgramStart(
+      {Key? key, required this.currentDay, required this.currentExerciseIndex})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        child: ExerciseScreen(),
+        child: ExerciseScreen(
+            currentDay: currentDay, currentExerciseIndex: currentExerciseIndex),
       ),
     );
   }
 }
 
-class ExerciseScreen extends StatefulWidget {
-  const ExerciseScreen({super.key});
+class ExerciseScreen extends ConsumerStatefulWidget {
+  final int currentDay;
+  final int currentExerciseIndex;
+
+  const ExerciseScreen(
+      {super.key,
+      required this.currentDay,
+      required this.currentExerciseIndex});
 
   @override
   _ExerciseScreenState createState() => _ExerciseScreenState();
 }
 
-class _ExerciseScreenState extends State<ExerciseScreen> {
-  int currentExerciseIndex = 0;
-  List<bool> completedExercises = List.filled(exerciseTitles.length, false);
+class _ExerciseScreenState extends ConsumerState<ExerciseScreen> {
+  late int _currentExerciseIndex;
+  late int _currentDay;
 
-  void goToNextExercise() {
-    setState(() {
-      completedExercises[currentExerciseIndex] = true;
-      if (currentExerciseIndex < exerciseTitles.length - 1) {
-        currentExerciseIndex++;
-      } else {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                ExerciseSummary(completedExercises: completedExercises),
-          ),
-        );
-      }
-    });
+  @override
+  void initState() {
+    super.initState();
+    _currentExerciseIndex = widget.currentExerciseIndex;
+    _currentDay = widget.currentDay;
+    _updateProgress();
   }
 
   @override
   Widget build(BuildContext context) {
+    final dayExercises = exercises[_currentDay] ?? [];
+
     return ListView(
       scrollDirection: Axis.vertical,
       children: [
@@ -64,7 +127,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => ProgramDetail(onAddProgram: (String ) {  },),
+                          builder: (context) => const ProgramCare(),
                         ),
                       );
                     },
@@ -73,6 +136,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                       color: Colors.grey,
                     ),
                   ),
+                  const SizedBox(width: 15),
                   Text(
                     'Postoperative Care',
                     textAlign: TextAlign.center,
@@ -82,41 +146,31 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                       color: aGray,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProgramProgress(),
-                        ),
-                      );
-                    },
-                    child: const Image(
-                      image: AssetImage(AppImages.arrownext),
-                      color: aGray,
-                    ),
-                  ),
+                  const SizedBox(width: 55),
                 ],
               ),
               const SizedBox(
                 height: 2,
               ),
               Text(
-                'Day 1: ${exerciseTitles[currentExerciseIndex]}',
+                _currentDay == 2
+                    ? 'Day 2-5: ${dayExercises[_currentExerciseIndex]['title']}'
+                    : _currentDay == 3
+                        ? 'Day 6+: ${dayExercises[_currentExerciseIndex]['title']}'
+                        : 'Day $_currentDay: ${dayExercises[_currentExerciseIndex]['title']}',
                 style: GoogleFonts.lato(
                   fontSize: 20,
                   color: aRed,
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-              const SizedBox(height: 10),
+              ),SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  for (int i = 0; i < exerciseTitles.length; i++)
+                  for (int i = 0; i < dayExercises.length; i++)
                     Indicator(
-                      isActive: i == currentExerciseIndex,
-                      isCompleted: completedExercises[i],
+                      isActive: i == _currentExerciseIndex,
+                      isCompleted: _currentExerciseIndex > i,
                     ),
                 ],
               ),
@@ -139,7 +193,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(40),
                         child: Image.asset(
-                          exerciseImages[currentExerciseIndex],
+                          dayExercises[_currentExerciseIndex]['image']!,
                           width: 367,
                           height: 326,
                           alignment: Alignment.topCenter,
@@ -148,7 +202,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                       const SizedBox(height: 20),
                       Center(
                         child: Text(
-                          'Duration: ${exerciseDurations[currentExerciseIndex]}, rest in between',
+                          'Duration: ${dayExercises[_currentExerciseIndex]['duration']}',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.lato(
                             fontSize: 20,
@@ -159,7 +213,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                       ),
                       const SizedBox(height: 25),
                       Text(
-                        exerciseDescriptions[currentExerciseIndex],
+                        dayExercises[_currentExerciseIndex]['description']!,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.lato(
                           fontSize: 16,
@@ -179,7 +233,7 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
                             ),
                           ),
                           child: Text(
-                            currentExerciseIndex < exerciseTitles.length - 1
+                            _currentExerciseIndex < dayExercises.length - 1
                                 ? 'Next'
                                 : 'Finish',
                             style: GoogleFonts.leagueSpartan(
@@ -199,38 +253,68 @@ class _ExerciseScreenState extends State<ExerciseScreen> {
       ],
     );
   }
+
+  void goToNextExercise() {
+  setState(() {
+    final dayExercises = exercises[_currentDay] ?? [];
+    if (_currentExerciseIndex < dayExercises.length - 1) {
+      _currentExerciseIndex++;
+      ref.read(currentExerciseIndexProvider.state).state = _currentExerciseIndex;
+    } else {
+      if (_currentDay < exercises.keys.length) {
+        _currentDay++;
+        _currentExerciseIndex = 0;
+        ref.read(currentDayProvider.state).state = _currentDay;
+        ref.read(currentExerciseIndexProvider.state).state = _currentExerciseIndex;
+      } else {
+        ref.read(exerciseProgressProvider.state).state = 1.0;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ExerciseSummary(),
+          ),
+        );
+      }
+    }
+    final dayOfWeek = (_currentDay - 1) % 7;
+    ref.read(weeklySummaryProvider.notifier).updateExercise(dayOfWeek, 1.0);
+    _updateProgress();
+  });
+}
+
+
+  void _updateProgress() {
+  final totalExercises = exercises.values.expand((e) => e).length;
+  final completedExercisesCount = exercises.entries
+      .takeWhile((entry) => entry.key < _currentDay)
+      .expand((entry) => entry.value)
+      .length + _currentExerciseIndex + 1;
+  double progress = completedExercisesCount / totalExercises;
+  Future.microtask(() {
+    ref.read(exerciseProgressProvider.state).state = progress;
+  });
+ }
 }
 
 class Indicator extends StatelessWidget {
   final bool isActive;
   final bool isCompleted;
 
-  const Indicator({super.key, required this.isActive, required this.isCompleted});
+  const Indicator({Key? key, required this.isActive, required this.isCompleted})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 11,
-      width: 28,
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 150),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      height: isActive ? 12 : 8,
+      width: isActive ? 12 : 8,
       decoration: BoxDecoration(
-        color: isCompleted ? aRed : (isActive ? aRed : Colors.grey),
-        borderRadius: BorderRadius.circular(40),
+        shape: BoxShape.circle,
+        color:
+            isCompleted ? Colors.green : (isActive ? Colors.red : Colors.grey),
       ),
-      margin: const EdgeInsets.only(right: 10),
     );
   }
 }
-
-List<String> exerciseTitles = ['Icing', 'Ankle Pumping'];
-List<String> exerciseDescriptions = [
-  'An ice pack is wrapped in a thin towel and placed gently above the hip. This is to reduce pain and inflammation in the area.',
-  'Description of exercise 2',
-];
-List<String> exerciseImages = [
-  AppImages.icing,
-  AppImages.ankle,
-];
-List<String> exerciseDurations = [
-  '4 hours, rest in between',
-  'Duration of exercise 2',
-];

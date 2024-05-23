@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:therapy/bargraph/bar_graph.dart';
-import 'package:therapy/bargraph/pie_chart.dart';
 import 'package:therapy/themes/const_style.dart';
+import '../bargraph/pie_chart.dart';
+import '../providers.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Home extends ConsumerStatefulWidget {
+  const Home({Key? key}) : super(key: key);
 
   @override
-  State<Home> createState() => _HomeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomeState extends State<Home> {
-  List<double> weeklySummary = [1.0, 0.0, 2.0, 0.0, 1.0, 0.0, 1.0];
+class _HomeState extends ConsumerState<Home> {
   @override
   Widget build(BuildContext context) {
     String currentDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+    final activePrograms = ref.watch(activeProgramsProvider);
+    final weeklySummary = ref.watch(weeklySummaryProvider);
 
     return SafeArea(
       child: Scaffold(
@@ -53,8 +56,9 @@ class _HomeState extends State<Home> {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: activePrograms.length,
                   itemBuilder: (BuildContext context, int index) {
+                    final program = activePrograms[index];
                     return Container(
                       height: 143,
                       width: double.infinity,
@@ -64,10 +68,19 @@ class _HomeState extends State<Home> {
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: const Text(
-                        'No active program',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            program['title']!,
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            program['duration']!,
+                            style: const TextStyle(fontSize: 14),
+                          ),
+                        ],
                       ),
                     );
                   },
@@ -97,7 +110,14 @@ class _HomeState extends State<Home> {
                         color: Colors.grey[300],
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: MyBarGraph(weeklySummary: weeklySummary),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            child: MyBarGraph(weeklySummary: weeklySummary),
+                          ),
+                        ],
+                      ),
                     );
                   },
                 ),
