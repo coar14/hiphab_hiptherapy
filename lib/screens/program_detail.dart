@@ -9,7 +9,7 @@ import 'package:therapy/widget/bottom_navbar.dart';
 import '../providers.dart';
 
 class ProgramDetail extends ConsumerWidget {
-  const ProgramDetail({Key? key}) : super(key: key);
+  const ProgramDetail({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -160,11 +160,11 @@ class ProgramCard extends StatelessWidget {
   final String image;
 
   const ProgramCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.duration,
     required this.image,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

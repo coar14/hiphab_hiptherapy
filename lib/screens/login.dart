@@ -7,10 +7,10 @@ import 'package:therapy/themes/const_style.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key}); // Make constructor const
+  const Login({super.key});
 
   @override
-  LoginState createState() => LoginState(); // Make state class public
+  LoginState createState() => LoginState();
 }
 
 class LoginState extends State<Login> {
@@ -22,17 +22,37 @@ class LoginState extends State<Login> {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
 
-  void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: emailController.text,
-      password: passwordController.text,
-    );
+  Future<void> signUserIn() async {
+    try {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+      );
+
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      Navigator.of(context).pop();
+      Navigator.of(context).pushReplacementNamed(
+          '/home'); // Navigate to home on successful login
+    } on FirebaseAuthException catch (e) {
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.message ?? 'An error occurred')),
+      );
+    }
   }
 
   @override
   void initState() {
     super.initState();
-    // Adding listeners to the focus nodes to handle scroll
     emailFocusNode.addListener(() {
       if (emailFocusNode.hasFocus) {
         _scrollToFocusedField(emailFocusNode);

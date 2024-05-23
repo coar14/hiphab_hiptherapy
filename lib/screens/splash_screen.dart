@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'auth_page.dart'; // Import the AuthPage
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,12 +12,17 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToGetStarted(context);
+    _navigateToAuthPage();
   }
 
-  _navigateToGetStarted(BuildContext context) async {
+  _navigateToAuthPage() async {
     await Future.delayed(const Duration(milliseconds: 2500), () {});
-    Navigator.of(context).pushReplacementNamed('/auth');
+    if (mounted) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AuthPage()),
+      );
+    }
   }
 
   @override

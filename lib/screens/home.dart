@@ -8,7 +8,7 @@ import '../bargraph/pie_chart.dart';
 import '../providers.dart';
 
 class Home extends ConsumerStatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -73,7 +73,8 @@ class _HomeState extends ConsumerState<Home> {
                         children: [
                           Text(
                             program['title']!,
-                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                            style: const TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 10),
                           Text(

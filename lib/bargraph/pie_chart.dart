@@ -5,7 +5,7 @@ import '../providers.dart';
 import '../themes/const_style.dart'; 
 
 class MyPieChart extends ConsumerWidget {
-  const MyPieChart({Key? key}) : super(key: key);
+  const MyPieChart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

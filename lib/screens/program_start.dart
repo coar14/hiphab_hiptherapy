@@ -69,8 +69,7 @@ class ProgramStart extends StatelessWidget {
   final int currentExerciseIndex;
 
   const ProgramStart(
-      {Key? key, required this.currentDay, required this.currentExerciseIndex})
-      : super(key: key);
+      {super.key, required this.currentDay, required this.currentExerciseIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -163,7 +162,7 @@ class _ExerciseScreenState extends ConsumerState<ExerciseScreen> {
                   color: aRed,
                   fontWeight: FontWeight.bold,
                 ),
-              ),SizedBox(height: 10),
+              ),const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -300,8 +299,7 @@ class Indicator extends StatelessWidget {
   final bool isActive;
   final bool isCompleted;
 
-  const Indicator({Key? key, required this.isActive, required this.isCompleted})
-      : super(key: key);
+  const Indicator({super.key, required this.isActive, required this.isCompleted});
 
   @override
   Widget build(BuildContext context) {

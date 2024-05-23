@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:therapy/screens/get_started.dart';
 
 class AuthPage extends StatelessWidget {
-  const AuthPage({Key? key});
+  const AuthPage({super.key});
 
   @override
   Widget build(BuildContext context) {

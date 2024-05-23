@@ -10,7 +10,7 @@ import '../providers.dart';
 final currentDayProvider = StateProvider<int>((ref) => 1);
 final currentExerciseIndexProvider = StateProvider<int>((ref) => 0);
 class ProgramCare extends ConsumerWidget {
-  const ProgramCare({Key? key}) : super(key: key);
+  const ProgramCare({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

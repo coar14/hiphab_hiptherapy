@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'login.dart'; // Import the Login page
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -23,7 +24,10 @@ class GetStarted extends StatelessWidget {
               width: 250,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Login()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.all(18),

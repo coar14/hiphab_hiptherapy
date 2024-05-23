@@ -4,7 +4,9 @@ import 'package:therapy/themes/const_style.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
+  Profile({super.key});
+
+  final user = FirebaseAuth.instance.currentUser!;
 
   void signUserOut() {
     FirebaseAuth.instance.signOut();
@@ -151,8 +153,11 @@ class Profile extends StatelessWidget {
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              const SizedBox(width: 130),
-                              const Icon(Icons.arrow_forward_ios_rounded)
+                              const Spacer(), // This will push the icon to the far right
+                              IconButton(
+                                onPressed: signUserOut,
+                                icon: const Icon(Icons.logout),
+                              ),
                             ],
                           ),
                         ),

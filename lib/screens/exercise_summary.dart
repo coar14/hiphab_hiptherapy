@@ -8,7 +8,7 @@ import '../providers.dart';
 
 
 class ExerciseSummary extends ConsumerStatefulWidget {
-  const ExerciseSummary({Key? key}) : super(key: key);
+  const ExerciseSummary({super.key});
 
   @override
   _ExerciseSummaryState createState() => _ExerciseSummaryState();
@@ -257,10 +257,10 @@ class Indicator extends StatelessWidget {
   final bool isCompleted;
 
   const Indicator({
-    Key? key,
+    super.key,
     required this.isActive,
     required this.isCompleted,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
