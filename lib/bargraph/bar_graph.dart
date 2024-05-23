@@ -22,9 +22,9 @@ class MyBarGraph extends StatelessWidget {
       BarChartData(
         maxY: 10,
         minY: 0,
-        gridData: const FlGridData(show: false),
+        gridData:  FlGridData(show: false),
         borderData: FlBorderData(show: false),
-        titlesData: const FlTitlesData(
+        titlesData:  FlTitlesData(
           show: true,
           topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
           leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
