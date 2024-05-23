@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "585762391028",
+    "project_id": "hiphab-6a19f",
+    "storage_bucket": "hiphab-6a19f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585762391028:android:4ff2a406c73d8a65742fa1",
+        "android_client_info": {
+          "package_name": "com.example.therapy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_MOyaCWE32NfvPcPyxrjQcG5ohcB6FbQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
