@@ -497,10 +497,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: a79dbe579cb51ecd6d30b17e0cae4e0ea15e2c0e66f69ad4198f22a6789e94f4
+      sha256: "464f5674532865248444b4c3daca12bd9bf2d7c47f759ce2617986e7229494a8"
       url: "https://pub.dev"
     source: hosted
-    version: "5.5.1"
+    version: "5.2.0"
   xdg_directories:
     dependency: transitive
     description:
@@ -510,5 +510,5 @@ packages:
     source: hosted
     version: "1.0.4"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
-  flutter: ">=3.19.2"
+  dart: ">=3.2.6 <4.0.0"
+  flutter: ">=3.10.0"

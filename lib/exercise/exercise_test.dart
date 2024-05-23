@@ -30,7 +30,7 @@ class ExerciseCare extends StatelessWidget {
             gifPath: ExsImg.eCalf,
             title: 'Calf Stretch Heel Cord',
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Center(
             child: Text(
               'STRENGTHENING',

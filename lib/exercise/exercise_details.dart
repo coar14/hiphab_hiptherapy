@@ -67,7 +67,7 @@ class ExerciseDetails extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Expanded(
+              const Expanded(
                 child: ExerciseCare(),
               ),
             ],

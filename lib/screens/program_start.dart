@@ -7,7 +7,7 @@ import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
 
 class ProgramStart extends StatelessWidget {
-  const ProgramStart({Key? key}) : super(key: key);
+  const ProgramStart({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -205,8 +205,7 @@ class Indicator extends StatelessWidget {
   final bool isActive;
   final bool isCompleted;
 
-  const Indicator({Key? key, required this.isActive, required this.isCompleted})
-      : super(key: key);
+  const Indicator({super.key, required this.isActive, required this.isCompleted});
 
   @override
   Widget build(BuildContext context) {

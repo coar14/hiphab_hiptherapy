@@ -9,7 +9,7 @@ import 'package:therapy/widget/bottom_navbar.dart';
 class ProgramDetail extends StatelessWidget {
   final Function(String) onAddProgram;
 
-  const ProgramDetail({Key? key, required this.onAddProgram}) : super(key: key);
+  const ProgramDetail({super.key, required this.onAddProgram});
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ import 'package:therapy/themes/const_style.dart';
 class ExerciseSummary extends StatefulWidget {
   final List<bool> completedExercises;
 
-  const ExerciseSummary({Key? key, required this.completedExercises}) : super(key: key);
+  const ExerciseSummary({super.key, required this.completedExercises});
 
   @override
   _ExerciseSummaryState createState() => _ExerciseSummaryState();
@@ -230,11 +230,11 @@ class EmotionWidget extends StatelessWidget {
   final VoidCallback onPressed;
 
   const EmotionWidget({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

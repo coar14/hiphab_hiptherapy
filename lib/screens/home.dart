@@ -6,7 +6,7 @@ import 'package:therapy/bargraph/pie_chart.dart';
 import 'package:therapy/themes/const_style.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -81,9 +81,9 @@ class _HomeState extends State<Home> {
                   fontSize: 24,
                 ),
               ),
-              Container(
+              const SizedBox(
                 height: 100,
-                child: const MyPieChart(),
+                child: MyPieChart(),
               ),
               Expanded(
                 child: ListView.builder(

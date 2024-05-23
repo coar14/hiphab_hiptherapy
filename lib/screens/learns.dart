@@ -160,7 +160,7 @@ class _LearnsState extends State<Learns> {
 }
 
 class ListCategories extends StatelessWidget {
-  const ListCategories({Key? key}) : super(key: key);
+  const ListCategories({super.key});
 
   @override
   Widget build(BuildContext context) {
