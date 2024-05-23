@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/screens/program_detail.dart';
 import 'package:therapy/screens/program_start.dart';
 import 'package:therapy/themes/app_image.dart';
 import 'package:therapy/themes/const_style.dart';
+import '../providers.dart';
 
-class ProgramCare extends StatelessWidget {
-  const ProgramCare({super.key});
+final currentDayProvider = StateProvider<int>((ref) => 1);
+final currentExerciseIndexProvider = StateProvider<int>((ref) => 0);
+class ProgramCare extends ConsumerWidget {
+  const ProgramCare({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final programStarted = ref.watch(programStartedProvider);
+    final currentDay = ref.watch(currentDayProvider);
+    final currentExerciseIndex = ref.watch(currentExerciseIndexProvider);
+
     return Scaffold(
       backgroundColor: aRed,
       body: SafeArea(
@@ -28,7 +36,7 @@ class ProgramCare extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ProgramDetail(onAddProgram: (String ) {},),
+                              builder: (context) => const ProgramDetail(),
                             ),
                           );
                         },
@@ -66,10 +74,12 @@ class ProgramCare extends StatelessWidget {
                   height: 1200,
                   width: 428,
                   decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(40),
-                          topLeft: Radius.circular(40)),
-                      color: Color(0xFFE8E8E8)),
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(40),
+                      topLeft: Radius.circular(40),
+                    ),
+                    color: Color(0xFFE8E8E8),
+                  ),
                   child: Column(
                     children: [
                       Padding(
@@ -86,29 +96,17 @@ class ProgramCare extends StatelessWidget {
                       Text(
                         '1 DAY POST-OP',
                         style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: aRed),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: aRed,
+                        ),
                       ),
                       const SizedBox(height: 10),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ProgramStart(),
-                            ),
-                          );
-                        },
-                      child: _buildImageWithText(
+                      _buildImageWithText(
                         image: AppImages.icing,
                         title: 'Icing',
                         subTitle: '4 hours, rest in between',
-                        context:
-                            context, 
-                        navigateTo:
-                            const ProgramStart(), 
-                      ),
+                        context: context,
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
@@ -116,15 +114,15 @@ class ProgramCare extends StatelessWidget {
                         title: 'Ankle Pumping',
                         subTitle: '3 sec hold, 10-15 times',
                         context: context,
-                        navigateTo: const ProgramStart(),
                       ),
                       const SizedBox(height: 20),
                       Text(
                         '2-5 DAY POST-OP',
                         style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: aRed),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: aRed,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
@@ -132,66 +130,85 @@ class ProgramCare extends StatelessWidget {
                         title: 'Sitting Dangle',
                         subTitle: '10 reps, 2x daily',
                         context: context,
-                        navigateTo: const ProgramStart(),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
-                          image: AppImages.leg,
-                          title: 'Sitting Leg Raises',
-                          subTitle: '10 reps, 2x daily',
-                          context: context,
-                          navigateTo: const ProgramStart()),
+                        image: AppImages.leg,
+                        title: 'Sitting Leg Raises',
+                        subTitle: '10 reps, 2x daily',
+                        context: context,
+                      ),
                       const SizedBox(height: 20),
                       Text(
                         '6 + DAY POST-OP',
                         style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: aRed),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: aRed,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
-                          image: AppImages.march,
-                          title: 'Alternating March',
-                          subTitle: '10 reps, 2x daily',
-                          context: context,
-                          navigateTo: const ProgramStart()),
+                        image: AppImages.march,
+                        title: 'Alternating March',
+                        subTitle: '10 reps, 2x daily',
+                        context: context,
+                      ),
                       const SizedBox(height: 10),
                       _buildImageWithText(
-                          image: AppImages.squats,
-                          title: 'Mini Squats',
-                          subTitle: '10 reps, 2x daily',
-                          context: context,
-                          navigateTo: const ProgramStart()),
+                        image: AppImages.squats,
+                        title: 'Mini Squats',
+                        subTitle: '10 reps, 2x daily',
+                        context: context,
+                      ),
                       const SizedBox(height: 35),
                       GestureDetector(
-                          onTap: () {
+                        onTap: () {
+                          if (programStarted) {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const ProgramStart(),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            height: 60,
-                            width: 309,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: aRed,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Start Program',
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.leagueSpartan(
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.white,
-                                  fontSize: 24,
+                                builder: (context) => ProgramStart(
+                                  currentDay: currentDay,
+                                  currentExerciseIndex: currentExerciseIndex,
                                 ),
                               ),
+                            );
+                          } else {
+                            ref.read(programStartedProvider.state).state = true;
+                            ref.read(currentExerciseIndexProvider.state).state = 0; 
+                            ref.read(currentDayProvider.state).state = 1; 
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProgramStart(
+                                  currentDay: 1,
+                                  currentExerciseIndex: 0,
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        child: Container(
+                          height: 60,
+                          width: 309,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: aRed,
+                          ),
+                          child: Center(
+                            child: Text(
+                              programStarted ? 'Continue Program' : 'Start Program',
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.leagueSpartan(
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white,
+                                fontSize: 24,
+                              ),
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -207,51 +224,40 @@ class ProgramCare extends StatelessWidget {
     required String image,
     required String title,
     required String subTitle,
-    required BuildContext
-        context, // Pass the BuildContext from the parent widget
-    required Widget navigateTo,
+    required BuildContext context,
   }) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => navigateTo,
-          ),
-        );
-      },
-      child: Container(
-        height: 113,
-        width: 353,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(40),
-          image: DecorationImage(
-              image: AssetImage(image),
-              alignment: Alignment.centerLeft,
-              fit: BoxFit.fitHeight),
+    return Container(
+      height: 113,
+      width: 353,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(40),
+        image: DecorationImage(
+          image: AssetImage(image),
+          alignment: Alignment.centerLeft,
+          fit: BoxFit.fitHeight,
         ),
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30, left: 160),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: GoogleFonts.lato(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 30, left: 160),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: GoogleFonts.lato(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
               ),
-              const SizedBox(height: 5),
-              Text(
-                subTitle,
-                style: GoogleFonts.lato(
-                  fontSize: 16,
-                ),
+            ),
+            const SizedBox(height: 5),
+            Text(
+              subTitle,
+              style: GoogleFonts.lato(
+                fontSize: 16,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
