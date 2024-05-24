@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'login.dart'; // Import the Login page
+import 'login.dart'; 
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
