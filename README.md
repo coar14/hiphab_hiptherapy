@@ -1,10 +1,12 @@
-# therapy
+# HIPHAP 
 
-A new Flutter project.
+It's a mobile application that complements physical therapists' hip rehabilitation programs. It offers tailored exercises and guidance for independent use at home, especially when direct supervision isn't necessary.
 
-## Getting Started
+Thereby potentially saving time and cost for individuals managing their hip conditions.
 
-This project is a starting point for a Flutter application.
+## FEATURES
+
+![Feature Screenshot](./features.jpg)
 
 A few resources to get you started if this is your first Flutter project:
 
