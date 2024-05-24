@@ -45,10 +45,10 @@ class LoginState extends State<Login> {
 
       await Future.delayed(const Duration(seconds: 1));
 
-      Navigator.of(context).pop(); 
+      Navigator.of(context).pop();
       Navigator.of(context).pushReplacementNamed('/home');
     } on FirebaseAuthException catch (e) {
-      Navigator.of(context).pop(); 
+      Navigator.of(context).pop();
       if (e.code == 'user-not-found') {
         wrongEmailMessage();
       } else if (e.code == 'wrong-password') {
