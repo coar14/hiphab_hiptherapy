@@ -153,7 +153,7 @@ class Profile extends StatelessWidget {
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              const Spacer(), // This will push the icon to the far right
+                              const Spacer(), 
                               IconButton(
                                 onPressed: signUserOut,
                                 icon: const Icon(Icons.logout),
