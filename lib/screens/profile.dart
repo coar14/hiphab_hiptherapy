@@ -15,10 +15,7 @@ class Profile extends StatelessWidget {
     logger.d("Attempting to sign out...");
     FirebaseAuth.instance.signOut().then((_) {
       logger.d("Signed out successfully");
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const Login()),
-      );
+      Navigator.pushReplacementNamed(context, '/');
     }).catchError((error) {
       logger.e("Failed to sign out: $error");
     });
