@@ -1,16 +1,25 @@
-# therapy
+![Features](assets/readme/logo.JPG)
+# ABOUT
 
-A new Flutter project.
+It's a mobile application that
+complements physical therapists'
+hip rehabilitation programs. It
+offers tailored exercises and
+guidance for independent use at
+home, especially when direct
+supervision isn't necessary.
 
-## Getting Started
+Thereby potentially saving time
+and cost for individuals managing
+their hip conditions.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+-  User authentication
+-  User profile
+-  Exercise library
+-  Exercise tracking
+-  Progress tracking
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![Features](assets/readme/features.JPG)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
