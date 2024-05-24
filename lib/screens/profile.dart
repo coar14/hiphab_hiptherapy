@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:therapy/themes/const_style.dart';
+import 'package:therapy/screens/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:logger/logger.dart';
 
 class Profile extends StatelessWidget {
   Profile({super.key});
 
-  final user = FirebaseAuth.instance.currentUser!;
+  final user = FirebaseAuth.instance.currentUser;
+  final Logger logger = Logger();
 
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
+  void signUserOut(BuildContext context) {
+    logger.d("Attempting to sign out...");
+    FirebaseAuth.instance.signOut().then((_) {
+      logger.d("Signed out successfully");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Login()),
+      );
+    }).catchError((error) {
+      logger.e("Failed to sign out: $error");
+    });
   }
 
   @override
@@ -153,9 +165,9 @@ class Profile extends StatelessWidget {
                                 style: GoogleFonts.lato(
                                     fontSize: 20, fontWeight: FontWeight.w500),
                               ),
-                              const Spacer(), 
+                              const Spacer(),
                               IconButton(
-                                onPressed: signUserOut,
+                                onPressed: () => signUserOut(context),
                                 icon: const Icon(Icons.logout),
                               ),
                             ],

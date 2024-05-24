@@ -23,6 +23,10 @@ class LoginState extends State<Login> {
   final passwordFocusNode = FocusNode();
 
   Future<void> signUserIn() async {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      return;
+    }
+
     try {
       showDialog(
         context: context,
@@ -39,10 +43,12 @@ class LoginState extends State<Login> {
         password: passwordController.text,
       );
 
-      Navigator.of(context).pop();
+      await Future.delayed(const Duration(seconds: 1));
+
+      Navigator.of(context).pop(); // Close the dialog
       Navigator.of(context).pushReplacementNamed('/home');
     } on FirebaseAuthException catch (e) {
-      Navigator.of(context).pop();
+      Navigator.of(context).pop(); // Close the dialog
       if (e.code == 'user-not-found') {
         wrongEmailMessage();
       } else if (e.code == 'wrong-password') {
